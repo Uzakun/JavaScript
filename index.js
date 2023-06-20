@@ -1,17 +1,95 @@
-                                 //   (I did everything i listed here as comments in console section of chrome inspect) 
-                                                   // Learnt abt DOM(document object model)
-// learnt how to select innerelementchild using DOM,
+                                                //Concise Method 
 
-//  learnt how i can select IdleDeadline, class, tagnames like document.getElementById, document.getElementsByTagName, document.getElementsByClassName
+var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
 
-//  and learn to change its stlye like ex. we have to change lets say h1 style to its color red then document.querySelector("h1").style.color = "green";
+var randomDiceImage = "dice" + randomNumber1 + ".png"; 
 
-// learnt how to select a seperate text using document.querySelector("h1").textContent = "LOL";
+var randomImageSource = "images/" + randomDiceImage; 
 
-// we can use .innerHTML to slect the text too but it will include everything inside that HTML ex. <h1><strong>Hello</strong></h1> here it will select 
+var image1 = document.querySelectorAll("img")[0];
 
-//  <strong>Hello</strong> . We can use .innerHTML like document.querySelector("h1").innerHTML = "Good Bye"; 
+image1.setAttribute("src", randomImageSource);
 
-// we can add class and remove class in JavaScript using document.querySelector("h1").classList.add("huge"); or remove as document.querySelector("h1").classList.remove("huge"); or can add if not there and remove if there like document.querySelector("h1").classList.toggle("huge");
 
-// we can add attributes using JavaScript like we can "get" and "set" attributes as like document.querySelector("a").attributes;--> to see how many attributes are there document.querySelector("a").getAttribute("href");--> to see whats inside that specific attribute and document.querySelector("a").setAttribute("href", "https://www.bing.com")--> to set the selected attribute to differnt link.
+var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+
+document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+
+
+//If player 1 wins
+if (randomNumber1 > randomNumber2) {
+  document.querySelector("h1").innerHTML = "🚩 Play 1 Wins!";
+}
+else if (randomNumber2 > randomNumber1) {
+  document.querySelector("h1").innerHTML = "Player 2 Wins! 🚩";
+}
+else {
+  document.querySelector("h1").innerHTML = "Draw!";
+}
+
+
+
+
+
+                                                 //  Lengthy Method
+
+
+// var randomNumber1;
+// var randomNumber2;
+// randomNumber1 = Math.floor(1 + Math.random()* 6);
+// randomNumber2 = Math.floor(1 + Math.random()* 6);
+
+// if(randomNumber1 === 1){
+// document.querySelector(".img1").setAttribute("src", "./images/dice1.png");
+// }
+// else if(randomNumber1 === 2){
+//     document.querySelector(".img1").setAttribute("src", "./images/dice2.png");
+// }
+// else if(randomNumber1 === 3){
+//     document.querySelector(".img1").setAttribute("src", "./images/dice3.png");
+// }  
+// else if(randomNumber1 === 4){
+//             document.querySelector(".img1").setAttribute("src", "./images/dice4.png");
+// }
+// else if(randomNumber1 === 5){
+//     document.querySelector(".img1").setAttribute("src", "./images/dice5.png");
+// }
+                
+// else{
+//     document.querySelector(".img1").setAttribute("src", "./images/dice6.png");
+// } 
+
+
+// if(randomNumber2 === 1){
+//     document.querySelector(".img2").setAttribute("src", "./images/dice1.png");
+// }
+// else if(randomNumber2 === 2){
+//         document.querySelector(".img2").setAttribute("src", "./images/dice2.png");
+// }
+// else if(randomNumber2 === 3){
+//         document.querySelector(".img2").setAttribute("src", "./images/dice3.png");
+// }  
+// else if(randomNumber2 === 4){
+//                 document.querySelector(".img2").setAttribute("src", "./images/dice4.png");
+// }
+// else if(randomNumber2 === 5){
+//         document.querySelector(".img2").setAttribute("src", "./images/dice5.png");
+// }
+                    
+// else{
+//         document.querySelector(".img2").setAttribute("src", "./images/dice6.png");
+// } 
+
+
+// if(randomNumber1 === randomNumber2){
+//     document.querySelector("h1").textContent = "Draw!";
+// }
+// else if(randomNumber1 > randomNumber2){
+//     document.querySelector("h1").textContent = "🚩 Player 1 Wins!";
+// }
+// else if(randomNumber1 < randomNumber2){
+//     document.querySelector("h1").textContent = "Player 2 Wins! 🚩";
+// }
+
