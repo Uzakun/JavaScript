@@ -1,95 +1,92 @@
-                                                //Concise Method 
 
-var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
+var numberOfDrums = document.querySelectorAll(".drum").length;
 
-var randomDiceImage = "dice" + randomNumber1 + ".png"; 
-
-var randomImageSource = "images/" + randomDiceImage; 
-
-var image1 = document.querySelectorAll("img")[0];
-
-image1.setAttribute("src", randomImageSource);
+for(var i = 0; i < numberOfDrums; i++){
 
 
-var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+// button Press, will work when mouse will be clicked on wanted place
 
-var randomImageSource2 = "images/dice" + randomNumber2 + ".png";
+document.querySelectorAll(".drum")[i].addEventListener("click", function(){
 
-document.querySelectorAll("img")[1].setAttribute("src", randomImageSource2);
+makeSound(this.innerHTML);
+buttonAnimation(this.innerHTML);
 
-
-//If player 1 wins
-if (randomNumber1 > randomNumber2) {
-  document.querySelector("h1").innerHTML = "🚩 Play 1 Wins!";
-}
-else if (randomNumber2 > randomNumber1) {
-  document.querySelector("h1").innerHTML = "Player 2 Wins! 🚩";
-}
-else {
-  document.querySelector("h1").innerHTML = "Draw!";
+});
 }
 
 
 
+// Keypress, will work when key will be pressed on keyboard 
 
 
-                                                 //  Lengthy Method
+document.addEventListener("keypress", function(event){
+
+   makeSound(event.key);
+   buttonAnimation(event.key);
+
+})
+
+function makeSound(key){
+  
+   switch (key) {
+
+      case "w":
+       
+         var crash = new Audio('sounds/crash.mp3');
+         crash.play();
+          
+      break;
+      
+      case "a":
+       
+         var kick_bass = new Audio('sounds/kick-bass.mp3');
+         kick_bass.play();
+          
+      break;
+      case "s":
+       
+         var snare = new Audio('sounds/snare.mp3');
+         snare.play();
+          
+      break;
+      case "d":
+       
+         var tom1 = new Audio('sounds/tom-1.mp3');
+         tom1.play();
+          
+      break;
+      case "j":
+       
+         var tom2 = new Audio('sounds/tom-2.mp3');
+         tom2.play();
+          
+      break;
+      case "k":
+       
+         var tom3 = new Audio('sounds/tom-3.mp3');
+         tom3.play();
+          
+      break;
+      case "l":
+       
+         var tom4 = new Audio('sounds/tom-4.mp3');
+         tom4.play();
+          
+      break;
+      
+      default: console.log(buttonInnerHTML);
+          
+   }
+}
 
 
-// var randomNumber1;
-// var randomNumber2;
-// randomNumber1 = Math.floor(1 + Math.random()* 6);
-// randomNumber2 = Math.floor(1 + Math.random()* 6);
+function buttonAnimation(currentkey) {
 
-// if(randomNumber1 === 1){
-// document.querySelector(".img1").setAttribute("src", "./images/dice1.png");
-// }
-// else if(randomNumber1 === 2){
-//     document.querySelector(".img1").setAttribute("src", "./images/dice2.png");
-// }
-// else if(randomNumber1 === 3){
-//     document.querySelector(".img1").setAttribute("src", "./images/dice3.png");
-// }  
-// else if(randomNumber1 === 4){
-//             document.querySelector(".img1").setAttribute("src", "./images/dice4.png");
-// }
-// else if(randomNumber1 === 5){
-//     document.querySelector(".img1").setAttribute("src", "./images/dice5.png");
-// }
-                
-// else{
-//     document.querySelector(".img1").setAttribute("src", "./images/dice6.png");
-// } 
+   var activeKey = document.querySelector("." + currentkey);
+  activeKey.classList.add("pressed");
 
-
-// if(randomNumber2 === 1){
-//     document.querySelector(".img2").setAttribute("src", "./images/dice1.png");
-// }
-// else if(randomNumber2 === 2){
-//         document.querySelector(".img2").setAttribute("src", "./images/dice2.png");
-// }
-// else if(randomNumber2 === 3){
-//         document.querySelector(".img2").setAttribute("src", "./images/dice3.png");
-// }  
-// else if(randomNumber2 === 4){
-//                 document.querySelector(".img2").setAttribute("src", "./images/dice4.png");
-// }
-// else if(randomNumber2 === 5){
-//         document.querySelector(".img2").setAttribute("src", "./images/dice5.png");
-// }
-                    
-// else{
-//         document.querySelector(".img2").setAttribute("src", "./images/dice6.png");
-// } 
-
-
-// if(randomNumber1 === randomNumber2){
-//     document.querySelector("h1").textContent = "Draw!";
-// }
-// else if(randomNumber1 > randomNumber2){
-//     document.querySelector("h1").textContent = "🚩 Player 1 Wins!";
-// }
-// else if(randomNumber1 < randomNumber2){
-//     document.querySelector("h1").textContent = "Player 2 Wins! 🚩";
-// }
-
+  setTimeout(function(){
+   activeKey.classList.remove("pressed");
+  }, 100)
+   
+}
